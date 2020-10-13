@@ -8,39 +8,41 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <div class="container">
             <header>
-                <a href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-
-                <div>
+                <div class="title">
+                    <img src="/img/laravel.svg" class="logo" />
+                    <a href="/">{{ config('app.name', 'Laravel') }}</a>
+                </div>
+                
+                <nav>
                     @guest
-                        <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
                         {{ Auth::user()->name }}
-                        <div>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <a class="nav-link" href="{{ route('user.index') }}">{{ __('User') }}</a>
-                            <a class="nav-link" href="{{ route('post.index') }}">{{ __('Post') }}</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
+                        <a class="nav-link" href="{{ route('user.index') }}">{{ __('User') }}</a>
+                        <a class="nav-link" href="{{ route('post.index') }}">{{ __('Post') }}</a>
+
+                        <a class="nav-link" 
+                            href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     @endguest
-                </div>
+                </nav>
             </header>
 
             <main>

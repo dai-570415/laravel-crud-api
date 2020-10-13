@@ -1,77 +1,77 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>{{ __('Register') }}</h2>
-<form method="POST" action="{{ route('register') }}">
-    @csrf
-    <div>
-        <label for="name">{{ __('Name') }}</label>
+<div class="login-page">
+    <h2>{{ __('Register') }}</h2>
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
         <div>
-            <input
-                id="name" 
-                type="text"
-                name="name"
-                value="{{ old('name') }}"
-                required
-                autocomplete="name" 
-                autofocus
-            >
-
+            <label for="name">{{ __('Name') }}</label>
             @error('name')
-                <p role="alert">{{ $message }}</p>
+                <p class="error" role="alert">{{ $message }}</p>
             @enderror
+            <div>
+                <input
+                    id="name" 
+                    type="text"
+                    name="name"
+                    value="{{ old('name') }}"
+                    required
+                    autocomplete="name" 
+                    autofocus
+                >
+            </div>
         </div>
-    </div>
-
-    <div>
-        <label for="email">{{ __('E-Mail Address') }}</label>
 
         <div>
-            <input
-                id="email" 
-                type="email"
-                name="email" 
-                value="{{ old('email') }}" 
-                required 
-                autocomplete="email"
-            >
+            <label for="email">{{ __('E-Mail Address') }}</label>
             @error('email')
-                <p role="alert">{{ $message }}</p>
+                <p class="error" role="alert">{{ $message }}</p>
             @enderror
+            <div>
+                <input
+                    id="email" 
+                    type="email"
+                    name="email" 
+                    value="{{ old('email') }}" 
+                    required 
+                    autocomplete="email"
+                >
+            </div>
         </div>
-    </div>
 
-    <div>
-        <label for="password">{{ __('Password') }}</label>
         <div>
-            <input
-                id="password" 
-                type="password"
-                name="password" 
-                required 
-                autocomplete="new-password"
-            >
+            <label for="password">{{ __('Password') }}</label>
             @error('password')
-                <p role="alert">{{ $message }}</p>
+                <p class="error" role="alert">{{ $message }}</p>
             @enderror
+            <div>
+                <input
+                    id="password" 
+                    type="password"
+                    name="password" 
+                    required 
+                    autocomplete="new-password"
+                >
+            </div>
         </div>
-    </div>
 
-    <div>
-        <label for="password-confirm">{{ __('Confirm Password') }}</label>
         <div>
-            <input
-                id="password-confirm" 
-                type="password"
-                name="password_confirmation"
-                required 
-                autocomplete="new-password"
-            >
+            <label for="password-confirm">{{ __('Confirm Password') }}</label>
+            <div>
+                <input
+                    id="password-confirm" 
+                    type="password"
+                    name="password_confirmation"
+                    required 
+                    autocomplete="new-password"
+                >
+            </div>
         </div>
-    </div>
 
-    <div>
-        <button type="submit">{{ __('Register') }}</button>
-    </div>
-</form>
+        <div>
+            <button type="submit">{{ __('Register') }}</button>
+        </div>
+    </form>
+</div>
 @endsection

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    welcome
+<div class="welcome-page">
+    <h1>{{ __('welcome') }}</h1>
+</div>
 @endsection
