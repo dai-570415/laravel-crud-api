@@ -2,7 +2,5 @@
 @section('title', '投稿JSON')
 
 @section('content')
-    @foreach($items as $item)
-        {{ $item }}
-    @endforeach
+    {{ $items }}
 @endsection
