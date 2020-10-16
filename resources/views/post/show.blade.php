@@ -2,6 +2,7 @@
 @section('title', '詳細')
 
 @section('content')
+<div class="posts-page">
     @if($item !== '')
         {{ $item->title }}: {{ $item->message }}
         @if(!empty($item->image))
@@ -41,4 +42,5 @@
     @endif
 
     <a href="/post">Back</a>
+</div>
 @endsection
