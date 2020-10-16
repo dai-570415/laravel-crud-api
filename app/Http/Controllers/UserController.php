@@ -18,7 +18,7 @@ class UserController extends Controller
         $users = User::all();
         $param = [
             'authUser' => $authUser,
-            'user' => $users,
+            'users' => $users,
         ];
         return view('user.index', $param);
     }

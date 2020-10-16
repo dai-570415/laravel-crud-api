@@ -1,13 +1,13 @@
 @charset "utf-8";
 
 .login-page {
-    width: 36%;
-    margin: 0 auto;
+    width: 32%;
+    margin: 100px auto;
 }
-.login-page h2 {
+.login-page h3 {
     text-align: center;
     color: #FB503B;
-    margin: 0 0 36px 0;
+    margin: 0 0 24px 0;
 }
 .login-page input[type="text"],
 .login-page input[type="email"],
@@ -27,8 +27,9 @@
 }
 .login-page button {
     color: #fff;
-    margin: 0 16px 0 0;
-    padding: 16px 48px;
+    width: 100%;
+    margin: 0 0 36px 0;
+    padding: 8px;
     border: 1px solid #FB503B;
     border-radius: 30px;
     background: #FB503B;
@@ -39,9 +40,15 @@
     color: #FB503B;
     background: #fff;
 }
+.login-page .nav-link {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+}
 
 @media screen and (max-width:768px) {
     .login-page {
-        width: 90%;
+        width: 80%;
     }
 }

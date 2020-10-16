@@ -11,6 +11,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/post.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -20,34 +22,33 @@
                     <img src="/img/laravel.svg" class="logo" />
                     <a href="/">{{ config('app.name', 'Laravel') }}</a>
                 </div>
-                
-                <nav>
-                    @guest
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        @endif
-                    @else
-                        {{ Auth::user()->name }}
-                        <a class="nav-link" href="{{ route('user.index') }}">{{ __('User') }}</a>
-                        <a class="nav-link" href="{{ route('post.index') }}">{{ __('Post') }}</a>
-
-                        <a class="nav-link" 
+                @auth
+                    <div class="logout-icon">               
+                        <img src="/img/logout_wh.png" class="logout" />
+                        <a class="logout" 
                             href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            ログアウト
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    @endguest
-                </nav>
+                    </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endauth
             </header>
 
             <main>
                 @yield('content')
             </main>
+
+            @auth
+                <nav>
+                    <a class="nav-button" href="{{ route('post.index') }}">
+                        <img src="/img/post.svg" class="投稿管理" />
+                    </a>
+                </nav>
+            @endauth
         </div>
     </div>
 </body>

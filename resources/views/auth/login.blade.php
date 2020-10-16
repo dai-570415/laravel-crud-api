@@ -2,11 +2,10 @@
 
 @section('content')
 <div class="login-page">
-    <h2>{{ __('Login') }}</h2>
+    <h3>ログインしてください</h3>
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div>
-            <label for="email">{{ __('E-Mail') }}</label>
             @error('email')
                 <p class="error" role="alert">{{ $message }}</p>
             @enderror
@@ -15,7 +14,8 @@
                     id="email" 
                     type="email" 
                     name="email" 
-                    value="{{ old('email') }}" 
+                    value="{{ old('email') }}"
+                    placeholder="メールアドレス"
                     required autocomplete="email" 
                     autofocus
                 >
@@ -23,7 +23,6 @@
         </div>
 
         <div>
-            <label for="password">{{ __('Password') }}</label>
             @error('email')
                 <p class="error" role="alert">{{ $message }}</p>
             @enderror
@@ -32,6 +31,7 @@
                     id="password" 
                     type="password" 
                     name="password" 
+                    placeholder="パスワード(8文字以上)"
                     required 
                     autocomplete="current-password"
                 >
@@ -39,15 +39,12 @@
         </div>
 
         <div>
-            <button type="submit">{{ __('Login') }}</button>
-            <input
-                type="checkbox" 
-                name="remember" 
-                id="remember" 
-                {{ old('remember') ? 'checked' : '' }}
-            >
-            <label for="remember">{{ __('Remember Me') }}</label>
+            <button type="submit">ログイン</button>
         </div>
+
+        @guest
+            <a class="nav-link" href="{{ route('register') }}">まだ登録がお済みでない方&nbsp;&nbsp;|&nbsp;&nbsp;登録</a>
+        @endguest
     </form>
 </div>
 @endsection

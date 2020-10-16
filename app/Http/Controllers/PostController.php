@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         $authUser = Auth::user();
         $users = User::all();
-        $items = Post::with('user')->get();
+        $items = Post::with('user')->orderBy('created_at', 'desc')->get();
 
         $params = [
             'authUser' => $authUser,
@@ -48,8 +48,8 @@ class PostController extends Controller
         $message = [
             'user_id.integer' => 'Error',
             'user_id.required' => 'Error',
-            'title.required' => 'No title',
-            'message.required' => 'No message',
+            'title.required' => 'タイトルが入力されていません',
+            'message.required' => 'メッセージが入力されていません',
         ];
         $validator = Validator::make($form, $rules, $message);
 

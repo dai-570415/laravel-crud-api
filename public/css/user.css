@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+/* ユーザーリスト */
+.users-page  {
+    width: 64%;
+    margin: 150px auto;
+}
+.users-page form {
+    margin: 0 0 0 16px;
+}
+.users-page table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+.users-page table a {
+    font-size: 14px;
+    color: #1d353b;
+}
+.users-page th, .users-page td {
+    font-weight: 300;
+}
+.users-page th {
+    font-size: 12px;
+    color: #fff;
+    padding: 4px;
+    background: #1d353b;
+}
+.users-page td {
+    font-size: 14px;
+    padding: 16px;
+    border-bottom: 1px dashed #ccc;
+}
+.users-page tr {
+    background: #fff;
+}
+.users-page .user-thumb {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.users-page .edit-button .edit-icon {
+    display: block;
+    width: 16px;
+    transition: .5s;
+}
+.users-page .edit-button .edit-icon:hover {
+    opacity: .5;
+}
+
+/* 編集ページ */
+.user-page {
+    display: flex;
+    justify-content: center;
+    width: 64%;
+    margin: 150px auto;
+}
+.user-page .thumbnail {
+    margin: 0 16px 0 0;
+}
+.user-page .thumbnail img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.user-page input[type="text"] {
+    width: 100%;
+    height: 36px;
+    margin: 0 0 24px 0;
+    border: none;
+    border-bottom: 2px solid #eee;
+    outline: none;
+    transition: .5s;
+}
+.user-page input[type="text"]:focus {
+    border-bottom: 2px solid #FB503B;
+}
+.user-page input[type="file"] {
+    margin: 0 0 24px 0;
+}
+.user-page input[type="submit"] {
+    color: #fff;
+    margin: 0 16px 0 0;
+    padding: 8px 24px;
+    border: 1px solid #FB503B;
+    border-radius: 30px;
+    background: #FB503B;
+    outline: none;
+    transition: .5s;
+}
+.user-page input[type="submit"]:hover {
+    color: #FB503B;
+    background: #fff;
+}

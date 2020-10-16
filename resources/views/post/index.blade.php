@@ -1,82 +1,137 @@
 @extends('layouts.app')
-@section('title', '投稿ページ')
+@section('title', 'ツイート')
 
 @section('content')
+<div class="posts-page">
+    <label>ツイート</label>
     <form action="/post" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" name="user_id" value="{{ $authUser->id }}" />
 
         <div>
-            @if($errors->has('title'))
-                <p class="error">{{ $errors->first('title') }}</p>
-            @endif
-            <label>title</label>
             <input
                 type="text"
                 name="title" 
                 value="{{ old('title') }}"
-                placeholder="title"
+                placeholder="タイトルを入力..."
             />
+            @if($errors->has('title'))
+                <p class="error">{{ $errors->first('title') }}</p>
+            @endif
         </div>
 
         <div>
-            @if($errors->has('message'))
-                <p class="error">{{ $errors->first('message') }}</p>
-            @endif
-            <label>message</label>
             <textarea
                 name="message"
-                placeholder="message"
+                placeholder="メッセージを入力..."
             >
                 {{ old('message') }}
             </textarea>
+            @if($errors->has('message'))
+                <p class="error">{{ $errors->first('message') }}</p>
+            @endif
         </div>
 
-        <div>
-            <input type="file" name="thumbnail">
-        </div>
-
-        <div>
-            <input type="submit" value="create" />
+        <div class="button">
+            <label>
+                <span class="filelabel" title="ファイルを選択">
+                    <img src="/img/upload.png" width="20" height="20" alt="upload">
+                </span>
+                <input type="file" class="default-file" name="thumbnail">
+            </label>
+            <input type="submit" class="post-button" value="投稿する" />
         </div>
     </form>
 
-    @if(count($items) > 0)
-        @foreach($items as $item)
-            @if($authUser->id === $item->user_id)
-                <div>
-                    <form action="/post/{{ $item->id }}" method="POST">
-                        {{ csrf_field() }}
+    <div class="list">
+        @if(count($items) > 0)
+            @foreach($items as $item)
+                @if($authUser->id === $item->user_id)
+                    <div class="list-item">
+                        <form action="/post/{{ $item->id }}" method="POST">
+                            {{ csrf_field() }}
+
+                            <div class="post-upper">
+                                @foreach($users as $user)
+                                    @if($user->id === $item->user_id)
+                                        <a href="{{ route('user.userEdit') }}">
+                                        @if(!empty($user->thumbnail))
+                                            <img
+                                                src="/storage/user/{{ $user->thumbnail }}"
+                                                class="user-thumbnail"
+                                            >
+                                        @else
+                                            <img
+                                                src="/img/noimage.png"
+                                                class="user-thumbnail"
+                                            >
+                                        @endif
+                                        </a>
+                                    @endif
+                                @endforeach
+                                <div class="post-text">
+                                    <div class="post-text-title">
+                                        <a href="/post/{{ $item->id }}">{{ $item->title }}</a>
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                        <input type="submit"　class="delete" value="×" /> 
+                                    </div>
+                                    <h6>
+                                        @foreach($users as $user)
+                                            @if($user->id === $item->user_id)
+                                                &#64;{{ $user->name }}
+                                            @endif
+                                        @endforeach
+                                    </h6>
+                                    <p>{{ $item->message }}</p>
+                                </div>
+                            </div>
+                            
+                            @if(!empty($item->image))
+                                <img src="/storage/post/{{ $item->image }}" class="post-image">
+                            @endif
+                        </form>
+                    </div>
+                @else
+                    <div class="list-item">
+                        <div class="post-upper">
                         @foreach($users as $user)
                             @if($user->id === $item->user_id)
-                                {{ $user->name }}
+                                @if(!empty($user->thumbnail))
+                                    <img
+                                        src="/storage/user/{{ $user->thumbnail }}"
+                                        class="user-thumbnail"
+                                    >
+                                @else
+                                    <img
+                                        src="/img/noimage.png"
+                                        class="user-thumbnail"
+                                    >
+                                @endif
                             @endif
                         @endforeach
-                        <a href="/post/{{ $item->id }}">
-                            {{ $item->title }}: {{ $item->message }}
-                        </a>
+                            <div class="post-text">
+                                <div class="post-text-title">
+                                    {{ $item->title }}
+                                </div>
+                                <h6>
+                                    @foreach($users as $user)
+                                        @if($user->id === $item->user_id)
+                                            &#64;{{ $user->name }}
+                                        @endif
+                                    @endforeach
+                                </h6>
+                                <p>{{ $item->message }}</p>
+                            </div>
+                        </div>
                         @if(!empty($item->image))
-                            <img src="/storage/post/{{ $item->image }}">
+                            <img src="/storage/post/{{ $item->image }}" class="post-image">
                         @endif
-                        <input type="hidden" name="_method" value="DELETE" />
-                        <input type="submit" value="delete" /> 
-                    </form>
-                </div>
-            @else
-                <div>
-                    @foreach($users as $user)
-                        @if($user->id === $item->user_id)
-                            {{ $user->name }}
-                        @endif
-                    @endforeach
-                    {{ $item->title }}: {{ $item->message }}
-                    @if(!empty($item->image))
-                        <img src="/storage/post/{{ $item->image }}">
-                    @endif
-                </div>
-            @endif
-        @endforeach
-    @else
-        No Posts
-    @endif
+                    </div>
+                @endif
+            @endforeach
+        @else
+            No Posts
+        @endif
+    </div>
+</div>
 @endsection

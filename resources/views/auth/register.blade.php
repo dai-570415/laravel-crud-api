@@ -2,11 +2,10 @@
 
 @section('content')
 <div class="login-page">
-    <h2>{{ __('Register') }}</h2>
+    <h3>登録してください</h3>
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div>
-            <label for="name">{{ __('Name') }}</label>
             @error('name')
                 <p class="error" role="alert">{{ $message }}</p>
             @enderror
@@ -16,6 +15,7 @@
                     type="text"
                     name="name"
                     value="{{ old('name') }}"
+                    placeholder="お名前"
                     required
                     autocomplete="name" 
                     autofocus
@@ -24,7 +24,6 @@
         </div>
 
         <div>
-            <label for="email">{{ __('E-Mail Address') }}</label>
             @error('email')
                 <p class="error" role="alert">{{ $message }}</p>
             @enderror
@@ -34,6 +33,7 @@
                     type="email"
                     name="email" 
                     value="{{ old('email') }}" 
+                    placeholder="メールアドレス"
                     required 
                     autocomplete="email"
                 >
@@ -41,7 +41,6 @@
         </div>
 
         <div>
-            <label for="password">{{ __('Password') }}</label>
             @error('password')
                 <p class="error" role="alert">{{ $message }}</p>
             @enderror
@@ -50,6 +49,7 @@
                     id="password" 
                     type="password"
                     name="password" 
+                    placeholder="パスワード(8文字以上)"
                     required 
                     autocomplete="new-password"
                 >
@@ -57,12 +57,12 @@
         </div>
 
         <div>
-            <label for="password-confirm">{{ __('Confirm Password') }}</label>
             <div>
                 <input
                     id="password-confirm" 
                     type="password"
                     name="password_confirmation"
+                    placeholder="同じパスワードを再入力"
                     required 
                     autocomplete="new-password"
                 >
@@ -70,8 +70,12 @@
         </div>
 
         <div>
-            <button type="submit">{{ __('Register') }}</button>
+            <button type="submit">登録する</button>
         </div>
+
+        @guest
+            <a class="nav-link" href="{{ route('login') }}">すでに登録済みの方&nbsp;&nbsp;|&nbsp;&nbsp;ログイン</a>
+        @endguest
     </form>
 </div>
 @endsection

@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+.posts-page {
+    width: 480px;
+    margin: 0 auto;
+    padding: 8px 0;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: #fff;
+}
+.posts-page label {
+    display: block;
+    font-weight: bold;
+    padding: 0 16px 8px;
+}
+.posts-page input[type="text"],
+.posts-page textarea {
+    font-size: 14px;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+.posts-page input[type="text"] {
+    border-top: 1px solid #ccc;
+}
+.posts-page textarea {
+    height: 100px;
+    resize: none;
+}
+.posts-page .button {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 8px solid #eee;
+}
+.posts-page .post-button {
+    color: #fff;
+    margin: 0 16px 0 0;
+    padding: 8px 24px;
+    border: 1px solid #FB503B;
+    border-radius: 30px;
+    background: #FB503B;
+    outline: none;
+    transition: .5s;
+}
+.posts-page .post-button:hover {
+    color: #FB503B;
+    background: #fff;
+}
+.default-file {
+    display: none;
+}
+.posts-page .error {
+    padding: 16px 16px 0;
+}
+.posts-page .list .list-item {
+    padding: 16px;
+    border-bottom: 1px solid #ccc;
+}
+.posts-page .list .list-item .post-upper {
+    display: flex;
+    justify-content: space-between;
+}
+.posts-page .list .list-item .post-upper .user-thumbnail {
+    display: block;
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    margin: 0 16px 0 0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+.posts-page .list .list-item .post-upper .post-text {
+    flex: 1;
+}
+.posts-page .list .list-item .post-upper .post-text .post-text-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.posts-page .list .list-item .post-upper .post-text .post-text-title .delete {
+    font-size: 16px;
+    border: none;
+    background: none;
+}
+.posts-page .list .list-item .post-upper .post-text h6 {
+    margin: 0 0 16px 0;
+}
+.posts-page .list .list-item .post-image {
+    width: 100%;
+}
