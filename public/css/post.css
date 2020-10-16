@@ -26,7 +26,7 @@
     border-top: 1px solid #ccc;
 }
 .posts-page textarea {
-    height: 100px;
+    height: 200px;
     resize: none;
 }
 .posts-page .button {
