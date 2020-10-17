@@ -23,14 +23,14 @@
                     <a href="/">{{ config('app.name', 'Laravel') }}</a>
                 </div>
                 @auth
-                    <div class="logout-icon">               
+                    <div class="logout-icon">                  
                         <img src="/img/logout_wh.png" class="logout" />
                         <a class="logout" 
                             href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             ログアウト
-                        </a>
+                        </a>    
                     </div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

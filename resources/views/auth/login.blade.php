@@ -15,7 +15,7 @@
                     type="email" 
                     name="email" 
                     value="{{ old('email') }}"
-                    placeholder="メールアドレス"
+                    placeholder="メールアドレス  例.example@domain.jp"
                     required autocomplete="email" 
                     autofocus
                 >
@@ -31,7 +31,7 @@
                     id="password" 
                     type="password" 
                     name="password" 
-                    placeholder="パスワード(8文字以上)"
+                    placeholder="パスワード  注.8文字以上"
                     required 
                     autocomplete="current-password"
                 >

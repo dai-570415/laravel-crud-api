@@ -3,15 +3,6 @@
 @section('content')
 <div class="users-page">
   <table>
-    <thead>
-    <tr>
-      <th></th>
-      <th>ID</th>
-      <th>名前</th>
-      <th>メールアドレス</th>
-      <th></th>
-    </tr>
-    </thead>
     @foreach($users as $user)
     <tbody>
       <tr>
@@ -21,8 +12,6 @@
           @else
             <img src="/img/noimage.png" class="user-thumb">
           @endif
-        </td>
-        <td>{{ $user->id }}</td>
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
         <td>

@@ -78,7 +78,7 @@
                                     <h6>
                                         @foreach($users as $user)
                                             @if($user->id === $item->user_id)
-                                                &#64;{{ $user->name }}
+                                                {{ $user->name }}
                                             @endif
                                         @endforeach
                                     </h6>
@@ -116,7 +116,7 @@
                                 <h6>
                                     @foreach($users as $user)
                                         @if($user->id === $item->user_id)
-                                            &#64;{{ $user->name }}
+                                            {{ $user->name }}
                                         @endif
                                     @endforeach
                                 </h6>

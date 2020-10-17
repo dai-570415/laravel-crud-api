@@ -25,8 +25,10 @@ class UserController extends Controller
 
     public function userEdit(Request $request){
         $authUser = Auth::user();
+        $users = User::all();
         $param = [
             'authUser' => $authUser,
+            'users' => $users,
         ];
         return view('user.userEdit', $param);
     }

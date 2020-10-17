@@ -46,6 +46,10 @@ header .title .logo {
     width: 88px;
     padding: 16px;
     background: #FB503B;
+    transition: .5s;
+}
+.logout-icon:hover {
+    opacity: .5;
 }
 .logout-icon img {
     display: block;
@@ -83,6 +87,12 @@ a {
     text-decoration: none;
     color: #FB503B;
 }
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    font-size: 14px;
+}
 ul li {
     list-style: none;
 }
@@ -117,6 +127,9 @@ nav .nav-button img {
 }
 nav .nav-button img:hover {
     opacity: .5;
+}
+.default-file {
+    display: none;
 }
 
 @media screen and (max-width:768px) {

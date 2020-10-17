@@ -6,6 +6,7 @@
     padding: 8px 0;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     background: #fff;
 }
 .posts-page label {
@@ -15,7 +16,6 @@
 }
 .posts-page input[type="text"],
 .posts-page textarea {
-    font-size: 14px;
     width: 100%;
     padding: 16px;
     border: none;
@@ -26,7 +26,7 @@
     border-top: 1px solid #ccc;
 }
 .posts-page textarea {
-    height: 200px;
+    height: 150px;
     resize: none;
 }
 .posts-page .button {
@@ -48,9 +48,6 @@
 .posts-page .post-button:hover {
     color: #FB503B;
     background: #fff;
-}
-.default-file {
-    display: none;
 }
 .posts-page .error {
     padding: 16px 16px 0;
